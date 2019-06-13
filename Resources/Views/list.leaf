@@ -1,0 +1,31 @@
+#set("title") { My List }
+
+#set("body") {
+<div class="container">
+	<h1 class="text-center p-3">My List</h1>
+    
+    <form method="POST" action="/create">
+        <div class="input-group mb-3">
+               <input type="text" name="item"  class="form-control" placeholder="Enter here"/>
+                <div class="input-group-append">
+                    <input type="submit" value="Create" class="btn btn-warning"/>
+                </div>
+        </div>
+        </form>
+   <table class="table table-bordered">
+       <tbody>
+    #for(list in itemList){
+    <tr>
+            <td><b>#(list.item)</b></td>
+            <td width="150">
+                <a href="/delete/#(list.id)" class="btn btn-danger btn-sm">Delete</a>
+                <a href="/edit/#(list.id)" class="btn btn-success btn-sm">Edit</a>
+            </td>
+        </tr>
+    }
+       </tbody>
+    </table>
+    </div>
+}
+
+#embed("base")
